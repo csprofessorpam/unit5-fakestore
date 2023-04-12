@@ -1,0 +1,12 @@
+.categories-container{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categories-container button{
+    border: none;
+    background-color: white;
+    margin: 10px;
+    cursor: pointer;
+}
