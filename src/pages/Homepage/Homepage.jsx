@@ -2,6 +2,7 @@
 import React from 'react'
 import "./Homepage.css"
 import  axios  from 'axios';
+import ProductCard from '../../components/ProductCard/ProductCard';
 
 
 
@@ -64,7 +65,8 @@ function Homepage() {
       </div>
       <div className="products-container">
         {
-          products.map(item => <p>{item.title}</p>)
+          // products.map(item => <p>{item.title}</p>)
+          products && products.map(item => <ProductCard key={item.id} product={item} />)
         }
       </div>
 
