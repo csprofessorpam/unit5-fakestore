@@ -1,14 +1,20 @@
 import React from 'react'
 import './ProductCard.css'
+import { FaEuroSign } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+//FaEuroSign
 
 function ProductCard({product}) {
   return (
-    <div className="product-card">
+    <Link to={`/details/${product?.id}`} className="product-card">
         <img src={product?.image} />
-        <h4>{product?.title}</h4>
+        <h5>{product?.title}</h5>
         <p>{product?.category}</p>
+        <div className="prod-price">
+        <FaEuroSign />
         <p>{product?.price}</p>
-    </div>
+        </div>
+    </Link>
   )
 }
 
