@@ -4,4 +4,10 @@
   box-sizing: border-box;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
+  
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
 }

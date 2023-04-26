@@ -1,5 +1,6 @@
 .homepage-container{
-    background-color:aliceblue;
+    /* background-color:aliceblue; */
+    background-color: #FAFAFA;
 }
 
 .categories-container{
@@ -19,4 +20,5 @@
 .products-container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }

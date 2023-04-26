@@ -40,27 +40,46 @@ function Homepage() {
     //default to all products when page loads
     //re run if selectedcategory changes
 
-    React.useEffect(
-      ()=>{
-        const url = selectedCategory==="all"?
+    // React.useEffect(
+    //   ()=>{
+    //     const url = selectedCategory==="all"?
+    //     "https://fakestoreapi.com/products"
+    //     :
+    //     `https://fakestoreapi.com/products/category/${selectedCategory}`
+
+    //     axios.get(url)
+    //     .then(res =>{
+    //       console.log(res.data)
+    //       setProducts(res.data)
+    //     })
+    //     .catch(err => console.log(err))
+
+    //   }, [selectedCategory]
+    // )
+
+    const filterProducts = (category)=>{
+
+        const url = category==="all"?
         "https://fakestoreapi.com/products"
         :
-        `https://fakestoreapi.com/products/category/${selectedCategory}`
+        `https://fakestoreapi.com/products/category/${category}`
 
-        axios.get(url)
+      axios.get(url)
         .then(res =>{
           console.log(res.data)
           setProducts(res.data)
         })
+        .catch(err => console.log(err))
 
-      }, [selectedCategory]
-    )
+    }
   return (
     <div className="homepage-container">
       <div className="categories-container">
         {
           categories.map((item, index) => <button key={index}
-          onClick={()=>setSelectedCategory(item)}>{item}</button>)
+          onClick={()=>filterProducts(item)}>{item}</button>)
+          // categories.map((item, index) => <button key={index}
+          // onClick={()=>setSelectedCategory(item)}>{item}</button>)
         }
       </div>
       <div className="products-container">
