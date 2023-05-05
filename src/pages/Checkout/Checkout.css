@@ -1,0 +1,16 @@
+
+.checkout-container button{
+    background-color: yellow;
+    border: none;
+    font-size: 1.2em;
+    width: 20%;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.checkout-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0 20px;
+}

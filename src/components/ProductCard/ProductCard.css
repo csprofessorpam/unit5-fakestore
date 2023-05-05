@@ -19,3 +19,11 @@
 .prod-price{
     display: flex;
 }
+
+.heart-red{
+    color: red;
+}
+
+.heart-blue{
+    color: blue;
+}

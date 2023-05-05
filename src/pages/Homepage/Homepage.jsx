@@ -58,6 +58,7 @@ function Homepage() {
     // )
 
     const filterProducts = (category)=>{
+      console.log('category is ', category)
 
         const url = category==="all"?
         "https://fakestoreapi.com/products"

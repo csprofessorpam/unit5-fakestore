@@ -1,13 +1,19 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import './ProductDetail.css'
+import { CartContext } from '../../contexts/CartContext'
+
 
 function ProductDetail() {
+      //use global state
+  //NOTE {} not []
+  const {cart, addProduct, removeProduct} = useContext(CartContext)
 
     const {prodId} = useParams();
 
     const [product, setProduct] = React.useState('')
+    const [inCart, setInCart] = React.useState(false)
 
     //https://fakestoreapi.com/products/1
 
@@ -21,7 +27,19 @@ function ProductDetail() {
         })
         .catch(err => console.log(err))
 
+
       }, []
+    )
+
+    //check if in cart
+    React.useEffect(
+      ()=>{
+
+        let found = cart.find(item => item.id ===product?.id)
+        console.log(found)
+        setInCart(found)
+
+      }, [cart]
     )
 
   return (
@@ -33,7 +51,13 @@ function ProductDetail() {
             <h3>{product?.price}</h3>
             <h3>Description</h3>
             <p>{product?.description}</p>
-            <button>Add to Cart</button>
+            {
+              inCart?
+            <button onClick={()=>removeProduct(product.id)}>Remove from Cart</button>
+            :
+            <button onClick={()=>addProduct(product)}>Add to Cart</button>
+            
+            }
         </div>
       </div>
     </div>
