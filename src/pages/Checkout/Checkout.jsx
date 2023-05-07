@@ -3,12 +3,14 @@ import CartItem from '../../components/CartItem/CartItem'
 import { CartContext } from '../../contexts/CartContext'
 import Modal from 'react-modal'
 import './Checkout.css'
+import {useNavigate} from 'react-router-dom'
 
 function Checkout() {
+  let navigate = useNavigate()
 
     //use global state
   //NOTE {} not []
-  const {cart, addProduct, removeProduct} = useContext(CartContext)
+  const {cart, addProduct, removeProduct, setCart} = useContext(CartContext)
 
     //create state to control Modal
     const [isOpen, setIsOpen] = React.useState(false);
@@ -23,6 +25,7 @@ function Checkout() {
       // marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       width: '600px',
+      height: '40%',
     },
     overlay:{
       backgroundColor:"rgba(0, 0, 0, 0.6)"
@@ -39,6 +42,14 @@ function Checkout() {
       total += cart[i].price;
     }
     return total;
+   }
+
+   const closeOrder = () =>{
+    setIsOpen(false)
+    //clear the cart
+    setCart([])  
+    //navigate to homepage
+    navigate('/')
    }
 
   return (
@@ -62,13 +73,13 @@ function Checkout() {
           style={customStyles}
           contentLabel="Contact Us Modal"
       >
-      <div className="modal-header">
-        <h2>Your Order was successful!</h2>
-        <h3>check your email for the order confirmation.  Thank you for shopping with Pam's Fake Store!</h3>
-        <button className="modal-close-btn"
-                onClick={()=>setIsOpen(false)}>Return to Main Page
-        </button>
-      </div>
+        <div className="modal-header">
+          <h2>Your Order was successful!</h2>
+          <h4>Check your email for the order confirmation.  Thank you for shopping with Pam's Fake Store!</h4>
+          <button className="modal-close-btn"
+                  onClick={closeOrder}>Return to Main Page
+          </button>
+        </div>
         
       </Modal>
 

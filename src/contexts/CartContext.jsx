@@ -52,7 +52,7 @@ export default function CartContextProvider(props){
     }
 
     return(
-        <CartContext.Provider value={{ cart, addProduct, removeProduct }} >
+        <CartContext.Provider value={{ cart, addProduct, removeProduct, setCart }} >
             {props.children}
         </CartContext.Provider>
     )

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import './ProductDetail.css'
 import { CartContext } from '../../contexts/CartContext'
-
+import {Link} from 'react-router-dom'
 
 function ProductDetail() {
       //use global state
@@ -44,6 +44,7 @@ function ProductDetail() {
 
   return (
     <div className="details-container">
+      <Link to="/">Continue shopping</Link>
       <div className="product-details"> 
         <img src={product?.image} />
         <div className="details-info">
