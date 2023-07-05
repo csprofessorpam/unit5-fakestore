@@ -35,7 +35,7 @@ function ProductDetail() {
     React.useEffect(
       ()=>{
 
-        let found = cart.find(item => item.id ===product?.id)
+        let found = cart.find(item => item.id ==prodId)
         console.log(found)
         setInCart(found)
 

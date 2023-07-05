@@ -22,22 +22,28 @@ export default function CartContextProvider(props){
 
         }, []
     )
+
+    useEffect(
+        ()=>{
+            console.log('update, cart is', cart)
+            localStorage.setItem('fakeCart', JSON.stringify(cart))
+
+        }, [cart]
+    )
     
 
     const addProduct = (productToAdd) =>{
         console.log('adding', productToAdd)
-        let newCart;
-        newCart = [...cart, productToAdd]
+        let newCart = [...cart, productToAdd]
         setCart(newCart)
-        localStorage.setItem('fakeCart', JSON.stringify(newCart))
+        //localStorage.setItem('fakeCart', JSON.stringify(newCart))
     }
 
     const removeProduct = (prodId) =>{
         console.log("remove", prodId)
-        let newCart;
-        newCart = cart.filter(item => item.id !== prodId)
+        let newCart = cart.filter(item => item.id !== prodId)
         setCart(newCart)
-        localStorage.setItem('fakeCart', JSON.stringify(newCart))
+        //localStorage.setItem('fakeCart', JSON.stringify(newCart))
     }
 
     return(
